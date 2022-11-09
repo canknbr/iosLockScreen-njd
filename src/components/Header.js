@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
 import React, { useState, useEffect } from 'react';
-
+import Animated, { SlideInUp } from 'react-native-reanimated';
 const Header = () => {
   const [date, setDate] = useState(dayjs());
   useEffect(() => {
@@ -15,11 +15,11 @@ const Header = () => {
   }, []);
 
   return (
-    <View style={styles.header}>
+    <Animated.View entering={SlideInUp} style={styles.header}>
       <Ionicons name="ios-lock-closed" size={20} color="white" />
       <Text style={styles.date}>{date.format('dddd, DD MMMM')}</Text>
       <Text style={styles.time}>{date.format('hh:mm')}</Text>
-    </View>
+    </Animated.View>
   );
 };
 const styles = StyleSheet.create({
