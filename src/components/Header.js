@@ -10,7 +10,7 @@ const Header = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDate(dayjs());
-    }, 1000);
+    }, 1000 * 60);
     return () => clearInterval(interval);
   }, []);
 

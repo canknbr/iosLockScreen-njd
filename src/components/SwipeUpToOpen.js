@@ -7,15 +7,15 @@ import Animated, {
   withSequence,
   withDelay,
 } from 'react-native-reanimated';
-const SwipeUpToOpen = () => {
+const SwipeUpToOpen = ({ text }) => {
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
           translateY: withRepeat(
             withSequence(
-              withTiming(-10),
-              withDelay(1000, withTiming(0)),
+              withTiming(-10, { duration: 300 }),
+              withDelay(1000, withTiming(0, { duration: 3000 })),
               withTiming(-10)
             ),
             -1
@@ -25,7 +25,7 @@ const SwipeUpToOpen = () => {
       opacity: withRepeat(
         withSequence(
           withDelay(1000, withTiming(0)),
-          withDelay(300, withTiming(1))
+          withDelay(3000, withTiming(1))
         ),
         -1
       ),
@@ -43,7 +43,7 @@ const SwipeUpToOpen = () => {
         animatedStyle,
       ]}
     >
-      Swipe up to open
+      {text}
     </Animated.Text>
   );
 };
